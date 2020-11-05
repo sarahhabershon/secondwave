@@ -5,6 +5,7 @@ import requests
 
 risk_url = "https://raw.githubusercontent.com/OxCGRT/covid-policy-scratchpad/master/risk_of_openness_index/data/riskindex_timeseries_latest.csv"
 stringency_url = "https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/OxCGRT_latest.csv"
+eur = pd.read_csv("europeancodes.csv")
 
 #set dytpes on load
 risk_dtypes = {"CountryCode": "str", "CountryName": "str", "openness_risk": "float64"}
@@ -33,8 +34,6 @@ risk_short.to_csv('rawriskindexdata.csv')
 stringency_short.to_csv('rawstringency.csv')
 
 
-
-
 jointables = pd.merge(stringency_short,
 						risk_short,
 						on=["Date", "CountryCode"],
@@ -42,3 +41,14 @@ jointables = pd.merge(stringency_short,
 
 
 jointables.to_csv("joined.csv")
+
+
+#create a subset for Europe
+europedataonly = pd.merge(eur,
+                        jointables,
+                        on='CountryCode',
+                        how = "left")
+
+europedataonly.drop(["name", "Unnamed: 0"], axis = 1, inplace = True)
+
+europedataonly.to_csv("europe_joined.csv")

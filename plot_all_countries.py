@@ -10,7 +10,6 @@ data.groupby("CountryName").plot
 
 def makeCharts(x):
     plt.clf()
-    # country = data.loc[data['CountryName'] == x, data['RegionCode'].isnull()]
     country = data.loc[((data['CountryName'] == x) & (data['RegionCode'].isnull()))]
     print(country)
     name = country["CountryName"]
