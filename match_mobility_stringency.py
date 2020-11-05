@@ -1,7 +1,7 @@
 import pandas as pd 
 
-eur_risk_strin = pd.read_csv("europe_joined.csv")
-goog_mob = pd.read_csv("mobility_europe.csv")
+eur_risk_strin = pd.read_csv("europe_joined.csv", parse_dates =["Date"])
+goog_mob = pd.read_csv("mobility_europe.csv", parse_dates =["Date"])
 
 #dates to datetime
 goog_mob['Date'] = pd.to_datetime(goog_mob['Date'], format='%Y-%m-%d')
@@ -19,4 +19,4 @@ test = pd.merge(eur_risk_strin,
 
 print(test.head)
 
-test.to_csv("zzdiditwork.csv")
+test.to_csv("mobility_stringency_match.csv")
