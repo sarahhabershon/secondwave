@@ -82,7 +82,6 @@ join_stringency_risk = pd.merge(stringency_data,
 						risk_data,
 						on=["Date", "CountryCode"],
 						how = "inner")
-# print(join_stringency_risk.dtypes)
 
 #create a subset for Europe
 europe_risk_stringency = pd.merge(eur,
@@ -92,17 +91,14 @@ europe_risk_stringency = pd.merge(eur,
 
 europe_risk_stringency.drop(["name", "Unnamed: 0"], axis = 1, inplace = True)
 
-# print(europe_risk_stringency.dtypes)
+
 #join risk and stringency to cases
-
-print(case_data.dtypes)
-# print(europe_risk_stringency.dtypes)
-
 europe_risk_stringency_cases = pd.merge(case_data,
                     europe_risk_stringency,
                     on=["Date", "CountryCode"],
                     how = "left")
 
+#join mobility
 total_join = pd.merge(europe_risk_stringency_cases,
                     mobility_europe,
                     on=["Date", "CountryCode"],

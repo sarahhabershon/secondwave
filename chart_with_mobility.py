@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 
 
-data = pd.read_csv("mobility_europe.csv", parse_dates =["Date"])
+data = pd.read_csv("refactored_output.csv", parse_dates =["Date"])
 
 data.groupby("name").plot
 
