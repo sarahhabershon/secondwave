@@ -1,7 +1,7 @@
 import pandas as pd 
 import matplotlib.pyplot as plt
 
-test = "Germany"
+
 
 data = pd.read_csv("mobility_europe.csv", parse_dates =["Date"])
 

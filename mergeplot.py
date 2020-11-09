@@ -6,6 +6,7 @@ data = pd.read_csv("mobility_stringency_match.csv", parse_dates =["Date"])
 
 data.groupby("name").plot
 
+
 def makeCharts(x):
     plt.clf()
     country = data.loc[data['name'] == str(x)]
@@ -21,7 +22,7 @@ def makeCharts(x):
     # # # plt.plot("Date", "grocery_and_pharmacy_percent_change_from_baseline", data=country, marker='', linewidth=2)
     plt.plot("Date", "rolling_avg_grocery_and_pharmacy", data=country, marker='', linewidth=2)
     # # # plt.plot("Date", "parks_percent_change_from_baseline", data=country, marker='', linewidth=2)
-    plt.plot("Date", "rolling_avg_parks", data=country, marker='', linewidth=2)
+    # plt.plot("Date", "rolling_avg_parks", data=country, marker='', linewidth=2)
     # # # plt.plot("Date", "transit_stations_percent_change_from_baseline", data=country, marker='', linewidth=2)
     plt.plot("Date", "rolling_avg_transit_stations", data=country, marker='', linewidth=2)
     # # # plt.plot("Date", "residential_percent_change_from_baseline", data=country, marker='', linewidth=2)
