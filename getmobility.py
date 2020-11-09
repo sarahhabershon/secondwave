@@ -46,5 +46,3 @@ mobility_europe = pd.merge(eur,
 mobility_europe.drop(["Unnamed: 0", "alpha-2", 'sub_region_1'], axis = 1, inplace = True)
 
 mobility_europe.to_csv("mobility_europe.csv")
-
-print(mobility)
